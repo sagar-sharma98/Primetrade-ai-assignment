@@ -29,7 +29,6 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
       }}
     >
       <CardContent sx={{ flexGrow: 1 }}>
-        {/* TITLE */}
         <Typography
           sx={{
             fontSize: { xs: "0.9rem", sm: "1rem" },
@@ -55,7 +54,6 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
           {task.title}
         </Typography>
 
-        {/* DESCRIPTION */}
         <Typography
           sx={{
             fontSize: { xs: "0.9rem", sm: "1rem" },
@@ -80,7 +78,6 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
           {task.description}
         </Typography>
 
-        {/* STATUS */}
         <Typography
           sx={{
             fontSize: { xs: "0.9rem", sm: "1rem" },
@@ -113,7 +110,6 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
 
       <Divider />
 
-      {/* BUTTONS */}
       <CardActions
         sx={{
           display: "flex",

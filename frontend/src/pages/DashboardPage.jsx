@@ -27,7 +27,6 @@ const Dashboard = () => {
 
   const theme = useTheme();
 
-  // Fetch tasks
   const fetchTasks = async () => {
     try {
       const res = await API.get("/tasks");
@@ -70,10 +69,8 @@ const Dashboard = () => {
         bgcolor: theme.palette.background.paper,
       }}
     >
-      {/* Sidebar */}
       <Sidebar filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
 
-      {/* Main Section */}
       <Box sx={{ flex: 1 }}>
         {/* Header */}
         <AppBar
@@ -101,7 +98,7 @@ const Dashboard = () => {
                 variant="outlined"
                 sx={{
                   backgroundColor: theme.palette.background.default,
-                  color: "#000", // optional (text color)
+                  color: "#000", 
                   borderColor: theme.palette.primary.main,
                   ":hover": {
                     backgroundColor: theme.palette.secondary.main,
@@ -116,7 +113,7 @@ const Dashboard = () => {
                 variant="contained"
                 sx={{
                   backgroundColor: theme.palette.background.default,
-                  color: "#000", // optional (text color)
+                  color: "#000",
                   borderColor: theme.palette.primary.main,
                   ":hover": {
                     backgroundColor: theme.palette.secondary.main,
@@ -130,7 +127,6 @@ const Dashboard = () => {
           </Toolbar>
         </AppBar>
 
-        {/* Task List */}
         <Box
           sx={{
             p: 3,
@@ -160,7 +156,6 @@ const Dashboard = () => {
         </Box>
       </Box>
 
-      {/* Add & Edit Modals */}
       <AddTaskModal
         open={addModalOpen}
         handleClose={() => setAddModalOpen(false)}

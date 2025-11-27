@@ -17,7 +17,7 @@ const Sidebar = ({ filterStatus, setFilterStatus }) => {
       sx={{
         width: { xs: "100%", md: 260 },
         p: 3,
-        bgcolor: theme.palette.primary.main, // primary background
+        bgcolor: theme.palette.primary.main,
         color: "white",
         height: { xs: "auto", md: "100vh" },
         boxShadow: { md: "4px 0px 20px rgba(0,0,0,0.15)" },
