@@ -6,6 +6,7 @@ import {
   Typography,
   Button,
   Avatar,
+  useTheme,
 } from "@mui/material";
 import Sidebar from "../components/Sidebar";
 import TaskList from "../components/TaskList";
@@ -24,6 +25,9 @@ const Dashboard = () => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
+  const theme = useTheme();
+
+  // Fetch tasks
   const fetchTasks = async () => {
     try {
       const res = await API.get("/tasks");
@@ -59,15 +63,24 @@ const Dashboard = () => {
     : tasks;
 
   return (
-    <Box sx={{ display: "flex", height: "100vh", bgcolor: "#BDD8F1" }}>
+    <Box
+      sx={{
+        display: "flex",
+        height: "100vh",
+        bgcolor: theme.palette.background.paper,
+      }}
+    >
+      {/* Sidebar */}
       <Sidebar filterStatus={filterStatus} setFilterStatus={setFilterStatus} />
 
+      {/* Main Section */}
       <Box sx={{ flex: 1 }}>
+        {/* Header */}
         <AppBar
           position="static"
           elevation={0}
           sx={{
-            background: "rgba(33,65,119,0.85)",
+            background: theme.palette.primary.main,
             backdropFilter: "blur(6px)",
             px: 3,
           }}
@@ -78,21 +91,36 @@ const Dashboard = () => {
             </Typography>
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-              <Avatar sx={{ bgcolor: "#82A6CB" }}>
+              {/* <Avatar sx={{ bgcolor: "#82A6CB" }}>
                 {user?.name?.charAt(0)}
-              </Avatar>
+              </Avatar> */}
 
-              <Typography>{user?.name}</Typography>
+              {/* <Typography>{user?.name}</Typography> */}
 
-              <Button variant="outlined" color="inherit" onClick={logout}>
+              <Button
+                variant="outlined"
+                sx={{
+                  backgroundColor: theme.palette.background.default,
+                  color: "#000", // optional (text color)
+                  borderColor: theme.palette.primary.main,
+                  ":hover": {
+                    backgroundColor: theme.palette.secondary.main,
+                  },
+                }}
+                onClick={logout}
+              >
                 Logout
               </Button>
 
               <Button
                 variant="contained"
                 sx={{
-                  bgcolor: "#3667A6",
-                  ":hover": { bgcolor: "#214177" },
+                  backgroundColor: theme.palette.background.default,
+                  color: "#000", // optional (text color)
+                  borderColor: theme.palette.primary.main,
+                  ":hover": {
+                    backgroundColor: theme.palette.secondary.main,
+                  },
                 }}
                 onClick={() => setAddModalOpen(true)}
               >
@@ -102,17 +130,21 @@ const Dashboard = () => {
           </Toolbar>
         </AppBar>
 
+        {/* Task List */}
         <Box
           sx={{
             p: 3,
             height: "calc(100vh - 64px)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            overflowY: "auto",
+            backgroundColor: theme.palette.background.paper,
           }}
         >
           {filteredTasks.length === 0 ? (
-            <Typography variant="h6" color="textSecondary">
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              sx={{ textAlign: "center", mt: 5 }}
+            >
               No tasks available. Add your first task!
             </Typography>
           ) : (
@@ -128,6 +160,7 @@ const Dashboard = () => {
         </Box>
       </Box>
 
+      {/* Add & Edit Modals */}
       <AddTaskModal
         open={addModalOpen}
         handleClose={() => setAddModalOpen(false)}

@@ -7,21 +7,29 @@ import {
   Select,
   FormControl,
   InputLabel,
+  useTheme,
 } from "@mui/material";
 
 const Sidebar = ({ filterStatus, setFilterStatus }) => {
+  const theme = useTheme();
   return (
     <Box
       sx={{
-        width: 260,
+        width: { xs: "100%", md: 260 },
         p: 3,
-        bgcolor: "#3667A6",
+        bgcolor: theme.palette.primary.main, // primary background
         color: "white",
-        height: "100vh",
-        boxShadow: "4px 0px 20px rgba(0,0,0,0.15)",
+        height: { xs: "auto", md: "100vh" },
+        boxShadow: { md: "4px 0px 20px rgba(0,0,0,0.15)" },
+        borderRadius: { xs: 2, md: 0 },
       }}
     >
-      <Typography variant="h6" mb={3} fontWeight={600}>
+      <Typography
+        variant="h6"
+        mb={3}
+        fontWeight={600}
+        sx={{ fontSize: { xs: "1rem", sm: "1.2rem" } }}
+      >
         Filters
       </Typography>
 
@@ -35,6 +43,7 @@ const Sidebar = ({ filterStatus, setFilterStatus }) => {
             color: "white",
             ".MuiSvgIcon-root": { color: "white" },
             borderRadius: 2,
+            backgroundColor: theme.palette.background.default,
           }}
         >
           <MenuItem value="">All</MenuItem>
@@ -48,8 +57,13 @@ const Sidebar = ({ filterStatus, setFilterStatus }) => {
         fullWidth
         sx={{
           color: "white",
+          backgroundColor: theme.palette.background.default,
           borderColor: "white",
-          ":hover": { borderColor: "#BDD8F1", color: "#BDD8F1" },
+          ":hover": {
+            borderColor: theme.palette.secondary.main,
+            color: theme.palette.secondary.main,
+          },
+          mt: 1,
         }}
         onClick={() => setFilterStatus("")}
       >

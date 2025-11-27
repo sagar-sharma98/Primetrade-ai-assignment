@@ -20,6 +20,7 @@ const style = {
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
+  borderRadius: 2,
 };
 
 const EditTaskModal = ({ open, handleClose, task, onEdit }) => {
