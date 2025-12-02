@@ -38,7 +38,7 @@ const EditTaskModal = ({ open, handleClose, task, onEdit }) => {
 
   const handleSubmit = () => {
     if (!title || !description) return alert("Please fill all fields");
-    onEdit(task._id, { title, description, status });
+    onEdit(task.id, { title, description, status });
   };
 
   return (

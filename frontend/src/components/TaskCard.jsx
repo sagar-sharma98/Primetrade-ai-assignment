@@ -150,7 +150,7 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
             },
             ml: 1,
           }}
-          onClick={() => onDelete(task._id)}
+          onClick={() => onDelete(task.id)}
         >
           Delete
         </Button>

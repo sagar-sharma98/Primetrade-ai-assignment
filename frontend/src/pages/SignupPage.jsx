@@ -24,6 +24,7 @@ const Signup = () => {
     }
     try {
       const res = await API.post("/auth/register", formData);
+      console.log("response", res);
       localStorage.setItem("userToken", res.data.token);
       signup({
         name: formData.name,

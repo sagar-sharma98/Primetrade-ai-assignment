@@ -48,13 +48,13 @@ const Dashboard = () => {
 
   const handleEditTask = async (id, updatedData) => {
     const res = await API.put(`/tasks/${id}`, updatedData);
-    setTasks(tasks.map((t) => (t._id === id ? res.data : t)));
+    setTasks(tasks.map((t) => (t.id === id ? res.data : t)));
     setEditModalOpen(false);
   };
 
   const handleDeleteTask = async (id) => {
     await API.delete(`/tasks/${id}`);
-    setTasks(tasks.filter((t) => t._id !== id));
+    setTasks(tasks.filter((t) => t.id !== id));
   };
 
   const filteredTasks = filterStatus
@@ -98,7 +98,7 @@ const Dashboard = () => {
                 variant="outlined"
                 sx={{
                   backgroundColor: theme.palette.background.default,
-                  color: "#000", 
+                  color: "#000",
                   borderColor: theme.palette.primary.main,
                   ":hover": {
                     backgroundColor: theme.palette.secondary.main,
